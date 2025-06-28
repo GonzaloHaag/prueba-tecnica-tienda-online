@@ -147,7 +147,7 @@ npm install
 
 Crear archivo `.env` en la carpeta `frontend/`:
 ```env
-API_URL=http://localhost:3001/api
+API_URL=http://localhost:8080/api
 ```
 
 ### 4. Configurar Cloudinary
@@ -171,7 +171,7 @@ npm run dev
 
 ### 6. Acceder a la aplicación
 - Frontend: http://localhost:3000
-- Backend: http://localhost:3001
+- Backend: http://localhost:8080
 
 ## 👥 Usuarios de Prueba
 
