@@ -23,6 +23,7 @@ import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import Link from "next/link";
 import { PlusCircleIcon } from "lucide-react";
+import { useFilterStore } from "@/lib/store";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,6 +35,13 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const { 
+    searchQuery, 
+    selectedCategory, 
+    setSearchQuery, 
+    setSelectedCategory 
+  } = useFilterStore();
+  
   const table = useReactTable({
     data,
     columns,
@@ -52,15 +60,17 @@ export function DataTable<TData, TValue>({
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
           <Input
             placeholder="Buscar producto..."
-            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("name")?.setFilterValue(event.target.value)
-            }
+            value={searchQuery}
+            onChange={(event) => {
+              setSearchQuery(event.target.value);
+              table.getColumn("name")?.setFilterValue(event.target.value);
+            }}
             className="sm:max-w-sm"
           />
           <Select
-            value={(table.getColumn("category")?.getFilterValue() as string) ?? "Todos"}
+            value={selectedCategory}
             onValueChange={(value) => {
+              setSelectedCategory(value);
               if (value === "Todos") {
                 table.getColumn("category")?.setFilterValue("");
               } else {

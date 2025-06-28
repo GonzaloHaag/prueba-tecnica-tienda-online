@@ -88,8 +88,7 @@ productsRouter.put("/edit/:id", upload.single("image"), async (req, res) => {
         .status(403)
         .json({ message: "No tienes permiso para actualizar este producto" });
     }
-
-    // Actualizacion de campos
+    
     const { name, description, price, stock, category } = req.body;
     if (name) product.name = name;
     if (description) product.description = description;
@@ -133,7 +132,7 @@ productsRouter.put("/edit/:id", upload.single("image"), async (req, res) => {
     return res.status(500).json({ message: "Error en el servidor" });
   }
 });
-productsRouter.delete("/:id", async (req, res) => {
+productsRouter.delete("/delete/:id", async (req, res) => {
   const productId = req.params.id;
   try {
     const findProduct = await Product.findOne({ _id: productId });

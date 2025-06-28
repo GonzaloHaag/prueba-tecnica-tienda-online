@@ -20,7 +20,7 @@ export const MetricCard = ({ title, value, icon, trend, className = "" }: Metric
           {icon}
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{value}</div>
+          <div className="text-2xl font-bold">{value || 0}</div>
           {trend && (
             <div className="flex items-center space-x-1 text-xs text-muted-foreground mt-1">
               {trend.isPositive ? (
