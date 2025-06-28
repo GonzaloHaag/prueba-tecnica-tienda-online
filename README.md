@@ -245,8 +245,8 @@ Puedes registrar cualquier usuario cliente con:
 
 
 ## 🚀 Deployment
-Frontend (Vercel): https://prueba-tecnica-tienda-online.vercel.app
-Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
+Frontend (Vercel): https://prueba-tecnica-tienda-online.vercel.app/
+Backend (Render): https://prueba-tecnica-tienda-online-backend.onrender.com/
 
 ## 📸 Capturas de Pantalla
 
