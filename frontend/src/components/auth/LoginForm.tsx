@@ -18,7 +18,7 @@ export const LoginForm = () => {
     const password = formData.get('password') as string;
     
     startTransition(async () => {
-      setError(null); // Limpiar error anterior
+      setError(null);
       const response = await userLoginAction(email, password);
       if (!response.success) {
         setError(response.message);

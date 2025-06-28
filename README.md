@@ -25,9 +25,8 @@ Aplicación full-stack completa para gestión de productos con autenticación de
 ### 📊 Dashboard de Administrador
 - Total de productos en el sistema
 - Productos con bajo stock (< 3 unidades)
-- Ventas simuladas con datos mock
+- Ventas simuladas con mock data
 - Gráfico de ventas mensuales con Recharts
-- Métricas con indicadores de tendencia
 
 ### 🎨 Interfaz de Usuario
 - Diseño responsive (mobile-first)
@@ -73,7 +72,7 @@ Aplicación full-stack completa para gestión de productos con autenticación de
 ## 📁 Estructura del Proyecto
 
 ```
-prueba-tecnica/
+prueba-tecnica-tienda-online/
 ├── backend/
 │   ├── controllers/
 │   │   ├── auth.js          # Autenticación
@@ -88,9 +87,7 @@ prueba-tecnica/
 │   │   ├── config.js        # Variables de entorno
 │   │   ├── db.js           # Conexión MongoDB
 │   │   └── cloudinary.js   # Config Cloudinary
-│   ├── requests/
-│   │   └── auth.rest       # Tests de API
-│   ├── app.js              # Config Express
+│   ├── app.js              # App Express
 │   └── index.js            # Servidor
 ├── frontend/
 │   ├── src/
@@ -246,6 +243,7 @@ Puedes registrar cualquier usuario cliente con:
 
 ## 🚀 Deployment
 Frontend (Vercel): https://prueba-tecnica-tienda-online.vercel.app/
+
 Backend (Render): https://prueba-tecnica-tienda-online-backend.onrender.com/
 
 ## 📸 Capturas de Pantalla
