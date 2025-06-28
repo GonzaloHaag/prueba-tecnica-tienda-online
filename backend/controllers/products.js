@@ -46,14 +46,34 @@ productsRouter.post("/new", upload.single("image"), async (req, res) => {
 });
 productsRouter.get("/", async (req, res) => {
   try {
-    const products = await Product.find({ user_id: req.user_id });
+    const products = await Product.find({ user_id: req.user._id });
     return res.status(200).json(products);
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Error en el servidor" });
   }
 });
-productsRouter.put("/:id", upload.single("image"), async (req, res) => {
+
+productsRouter.get("/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+    
+    if (product.user_id.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: "No tienes permiso para ver este producto" });
+    }
+    
+    return res.status(200).json(product);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Error en el servidor" });
+  }
+});
+
+productsRouter.put("/edit/:id", upload.single("image"), async (req, res) => {
   const productId = req.params.id;
   try {
     const product = await Product.findById(productId);
@@ -120,7 +140,7 @@ productsRouter.delete("/:id", async (req, res) => {
     if (!findProduct) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
-    if (!findProduct.user_id || findProduct.user_id !== req.user._id) {
+    if (!findProduct.user_id || findProduct.user_id.toString() !== req.user._id.toString()) {
       return res.status(401).json({ error: "Usuario no autorizado" });
     }
     await Product.findByIdAndDelete(productId);
