@@ -1,6 +1,6 @@
 # 🛍️ Tienda Online - Prueba Técnica Full Stack
 
-Una aplicación full-stack completa para gestión de productos con autenticación de usuarios, roles de administrador y cliente, y dashboard con métricas.
+Aplicación full-stack completa para gestión de productos con autenticación de usuarios, roles de administrador y cliente, y dashboard con métricas.
 
 ## 📋 Características Principales
 
@@ -261,10 +261,10 @@ Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
 ![Products List](./images/clientes-productos-page.png)
 *Lista de productos con filtros, búsqueda y paginación*
 
-![Product Form](./images/clientes-productos-nuevo.png)
+![Product Form](./images/clientes-productos-nuevo-page.png)
 *Formulario de creación de productos con subida de imágenes*
 
-![Product Edit](./images/clientes-productos-editar.png)
+![Product Edit](./images/clientes-productos-editar-page.png)
 *Formulario de edición de productos*
 
 ### 📊 Dashboard de Administrador
