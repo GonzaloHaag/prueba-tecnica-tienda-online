@@ -22,8 +22,6 @@ export const LoginForm = () => {
         setError(response.message);
         return;
       }
-      console.log(response);
-      form.reset();
       router.push("/");
     });
   };

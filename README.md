@@ -43,6 +43,7 @@ Una aplicación full-stack completa para gestión de productos con autenticació
 - **TypeScript** 
 - **Tailwind CSS v4**
 - **React 19**
+- **Zustand** (gestión de estado)
 - **TanStack Table** (paginación y filtros)
 - **Recharts** (gráficos)
 - **Radix UI** (componentes)
@@ -119,7 +120,7 @@ prueba-tecnica/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/GonzaloHaag/prueba-tecnica-tienda-online.git
 cd prueba-tecnica
 ```
 
@@ -245,15 +246,35 @@ Puedes registrar cualquier usuario cliente con:
 
 
 ## 🚀 Deployment
+Frontend (Vercel): https://prueba-tecnica-tienda-online.vercel.app
+Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
 
---- 
 ## 📸 Capturas de Pantalla
 
-### Pantallas principales:
-- Login/Registro
-- Dashboard de administrador
-- Lista de productos
-- Formulario de producto
-- Vista responsive
+### 🔐 Autenticación
+![Login Page](/images/login-page.png)
+*Pantalla de login con validaciones y feedback visual*
+
+![Register Page](/images/register-page.png)
+*Formulario de registro con validaciones*
+
+
+### 📦 Gestión de Productos
+![Products List](/images/clientes-productos-page.png)
+*Lista de productos con filtros, búsqueda y paginación*
+
+![Product Form](/images/clientes-productos-nuevo.png)
+*Formulario de creación de productos con subida de imágenes*
+
+
+![Product Form](/images/clientes-productos-editar.png)
+*Formulario de edición de productos*
+
+### 📊 Dashboard de Administrador
+![Admin Dashboard](./images/admin-dashboard.png)
+*Panel de administración con métricas y gráficos de ventas*
 
 ---
+**Desarrollado por:** Gonzalo Haag  
+**Fecha:** 2025  
+**Repositorio:** [GitHub](https://github.com/GonzaloHaag/prueba-tecnica-tienda-online.git)
