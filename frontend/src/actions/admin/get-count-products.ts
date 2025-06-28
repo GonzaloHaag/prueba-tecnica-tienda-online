@@ -3,7 +3,27 @@
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
-export const getCountProductsAdminAction = async() => {
+
+type SuccessResponse = {
+    success: true;
+    productsCount: number;
+    lowStockProducts: Array<{
+        id: string;
+        name: string;
+        stock: number;
+    }>;
+    lowStockCount: number;
+};
+
+type ErrorResponse = {
+    success: false;
+    message: string;
+    redirectToLogin?: boolean;
+};
+
+type GetCountProductsResponse = SuccessResponse | ErrorResponse;
+
+export const getCountProductsAdminAction = async(): Promise<GetCountProductsResponse> => {
     const cookieStore = await cookies();
     const token = cookieStore.get('token')?.value;
     

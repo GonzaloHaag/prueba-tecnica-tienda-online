@@ -1,10 +1,24 @@
 'use server';
 
+import { Product } from "@/lib/definitions";
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
 
-export const getProductAction = async (productId: string) => {
+type GetProductSuccessResponse = {
+    success: true;
+    product: Product;
+};
+
+type GetProductErrorResponse = {
+    success: false;
+    message: string;
+    redirectToLogin?: boolean;
+};
+
+type GetProductResponse = GetProductSuccessResponse | GetProductErrorResponse;
+
+export const getProductAction = async (productId: string): Promise<GetProductResponse> => {
   if (!productId) {
     return {
       success: false,

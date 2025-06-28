@@ -1,6 +1,18 @@
 'use server';
 const API_URL = process.env.API_URL;
-export const userRegisterAction = async (email:string,password:string) => {
+type RegisterSuccessResponse = {
+    success: true;
+    message: string;
+};
+
+type RegisterErrorResponse = {
+    success: false;
+    message: string;
+};
+
+type RegisterResponse = RegisterSuccessResponse | RegisterErrorResponse;
+
+export const userRegisterAction = async (email:string,password:string): Promise<RegisterResponse> => {
     console.log(API_URL)
     if(email.trim() === '') {
         return {

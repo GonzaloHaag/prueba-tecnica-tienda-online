@@ -5,7 +5,19 @@ import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
 
-export const createOrEditProductAction = async (formData: FormData) => {
+type CreateOrEditProductSuccessResponse = {
+    success: true;
+    message: string;
+};
+
+type CreateOrEditProductErrorResponse = {
+    success: false;
+    message: string;
+};
+
+type CreateOrEditProductResponse = CreateOrEditProductSuccessResponse | CreateOrEditProductErrorResponse;
+
+export const createOrEditProductAction = async (formData: FormData): Promise<CreateOrEditProductResponse> => {
   const productId = formData.get('productId')?.toString();
   const name = formData.get('name')?.toString().trim();
   const description = formData.get('description')?.toString().trim();

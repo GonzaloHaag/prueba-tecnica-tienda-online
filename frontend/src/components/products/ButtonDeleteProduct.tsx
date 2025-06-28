@@ -4,6 +4,7 @@ import { deleteProductAction } from "@/actions";
 import { useTransition } from "react";
 import { Button } from "../ui/button";
 import { LoaderCircleIcon, Trash2Icon } from "lucide-react";
+import { toast } from "sonner";
 
 interface ButtonDeleteProductProps {
   productId: string;
@@ -16,10 +17,10 @@ export const ButtonDeleteProduct = ({
        startTransition(async() => {
           const response = await deleteProductAction(productId);
           if(!response.success) {
-            console.log(response.message);
+            toast.error(response.message,{ duration:3000 })
             return
           }
-          console.log('Producto Borrado!')
+          toast.success(response.message,{ duration:3000 })
        })
     }
   return (

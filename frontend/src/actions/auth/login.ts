@@ -3,8 +3,19 @@
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
+type LoginSuccessResponse = {
+    success: true;
+    message: string;
+};
 
-export const userLoginAction = async (email: string, password: string) => {
+type LoginErrorResponse = {
+    success: false;
+    message: string;
+};
+
+type LoginResponse = LoginSuccessResponse | LoginErrorResponse;
+
+export const userLoginAction = async (email: string, password: string): Promise<LoginResponse> => {
     if(email.trim() === '') {
         return {
             success: false,

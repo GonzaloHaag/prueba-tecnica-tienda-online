@@ -4,7 +4,19 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
-export const deleteProductAction = async(productId:string) => {
+type DeleteProductSuccessResponse = {
+    success: true;
+    message: string;
+};
+
+type DeleteProductErrorResponse = {
+    success: false;
+    message: string;
+};
+
+type DeleteProductResponse = DeleteProductSuccessResponse | DeleteProductErrorResponse;
+
+export const deleteProductAction = async(productId:string): Promise<DeleteProductResponse> => {
     if(!productId) {
         return {
             success:false,

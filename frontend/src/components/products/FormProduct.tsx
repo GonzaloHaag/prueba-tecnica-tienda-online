@@ -11,6 +11,7 @@ import { createOrEditProductAction } from "@/actions";
 import { Product } from "@/lib/definitions";
 import Image from "next/image";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import { toast } from "sonner";
 
 interface FormProductProps {
   product?: Product;
@@ -36,6 +37,7 @@ export const FormProduct = ({ product }: FormProductProps) => {
         setError(res.message);
         return;
       } else {
+        toast.success(`Producto ${product ? 'editado' : 'creado' } exitosamente!`,{ duration:3000 })
         router.push("/cliente/productos");
       }
     });

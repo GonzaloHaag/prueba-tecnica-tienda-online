@@ -1,9 +1,24 @@
 'use server';
 
+import { Product } from "@/lib/definitions";
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL;
-export const getProductsAction = async() => {
+
+type GetProductsSuccessResponse = {
+    success: true;
+    products: Product[];
+};
+
+type GetProductsErrorResponse = {
+    success: false;
+    message: string;
+    redirectToLogin?: boolean;
+};
+
+type GetProductsResponse = GetProductsSuccessResponse | GetProductsErrorResponse;
+
+export const getProductsAction = async(): Promise<GetProductsResponse> => {
     const cookieStore = await cookies();
     const token = cookieStore.get('token')?.value;
     
