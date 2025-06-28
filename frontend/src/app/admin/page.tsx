@@ -7,6 +7,9 @@ import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
   const response = await getCountProductsAdminAction();
+  if (response.redirectToLogin) {
+    redirect("/login");
+  }
   if (!response.success) {
     return (
       <div className="w-full px-4 flex justify-center items-center py-10">
@@ -14,11 +17,7 @@ export default async function AdminPage() {
       </div>
     );
   }
-  if (response.redirectToLogin) {
-    redirect("/login");
-  }
-
-  // Datos para el gráfico
+  
   const chartData = mockSalesData.monthlyData.map(item => ({
     name: item.month,
     ventas: item.sales
@@ -31,7 +30,7 @@ export default async function AdminPage() {
         {/* Card de Productos Totales */}
         <MetricCard
           title="Productos Totales"
-          value={response.productsCount.toLocaleString()}
+          value={response.productsCount.toString()}
           icon={<Package size={25} />}
           trend={{
             value: 12,
@@ -42,7 +41,7 @@ export default async function AdminPage() {
         {/* Card de Productos con Bajo Stock */}
         <MetricCard
           title="Productos con Bajo Stock"
-          value={response.lowStockCount}
+          value={response.lowStockCount.toString()}
           icon={<AlertTriangle size={25} />}
           trend={{
             value: 5,

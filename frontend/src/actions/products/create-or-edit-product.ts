@@ -14,15 +14,13 @@ export const createOrEditProductAction = async (formData: FormData) => {
   const category = formData.get('category')?.toString().trim();
   const image = formData.get('image') as File | null;
 
-  // Validaciones básicas
   if (!name || !description || !price || !stock || !category) {
     return {
       success: false,
       message: 'Todos los campos son requeridos',
     };
   }
-  
-  // La imagen solo es requerida al crear, no al editar
+
   const isEditing = !!productId;
   if (!isEditing && (!image || image.size === 0)) {
     return {
@@ -50,7 +48,7 @@ export const createOrEditProductAction = async (formData: FormData) => {
       ? `${API_URL}/products/edit/${productId}`
       : `${API_URL}/products/new`;
     
-    // Si estamos editando y no hay nueva imagen, remover el campo image del FormData
+    // Si estoy editando y no hay nueva imagen, remuevo el campo image del FormData
     const formDataToSend = new FormData();
     for (const [key, value] of formData.entries()) {
       if (key === 'image' && isEditing && (!value || (value as File).size === 0)) {

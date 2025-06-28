@@ -13,7 +13,7 @@ export const deleteProductAction = async(productId:string) => {
     }
     try {
         const cookieStore = await cookies();
-        const response = await fetch(`${API_URL}/products/${productId}`,{
+        const response = await fetch(`${API_URL}/products/delete/${productId}`,{
             method:'DELETE',
             headers: {
                 'Authorization': `Bearer ${cookieStore.get('token')?.value}`

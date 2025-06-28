@@ -34,15 +34,25 @@ export const userLoginAction = async (email: string, password: string) => {
                 message: data.message || 'Error al iniciar sesión'
             }
         }
-        /** Guardar en las cookies el token y user */
-        const cookieToken = await cookies();
-        cookieToken.set('token',data.token,{
-            httpOnly:true
+        
+        /** Guardar toda la información del usuario en las cookies */
+        const cookieStore = await cookies();
+        
+        // Token de autenticación
+        cookieStore.set('token', data.token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 60 * 60 // 1 hora
         });
-        const cookieUser = await cookies();
-        cookieUser.set('user_role',data.user.role,{
-            httpOnly:true
-        })
+        
+        cookieStore.set('user_role', data.user.role, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 60 * 60 // 1 hora
+        });
+        
         return {
             success: true,
             message: data.message || 'Usuario logueado!'

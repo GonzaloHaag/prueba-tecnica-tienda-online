@@ -10,10 +10,7 @@ const app = express();
 
 mongoose.set('strictQuery',false);
 connectDb();
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 app.use(middleware.requestLogger);
 app.get("/", (req, res) => {
