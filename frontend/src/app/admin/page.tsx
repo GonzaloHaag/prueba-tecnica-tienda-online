@@ -1,24 +1,75 @@
+import { getCountProductsAdminAction } from "@/actions";
+import { MetricCard, SalesChart } from "@/components";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { mockSalesData } from "@/lib/mock-data";
+import { AlertTriangle, DollarSign, Package } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Panel de Administración</h1>
-      <div className="bg-white rounded-lg shadow-md p-6">        
-        <div className="mt-6">
-          <h3 className="text-lg font-medium mb-3">Acciones de Administrador</h3>
-          <div className="space-y-2">
-            <button className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-              Gestionar Usuarios
-            </button>
-            <button className="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-              Gestionar Productos
-            </button>
-            <button className="w-full bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
-              Ver Estadísticas
-            </button>
-          </div>
-        </div>
+  const response = await getCountProductsAdminAction();
+  if (response.redirectToLogin) {
+    redirect("/login");
+  }
+  if (!response.success) {
+    return (
+      <div className="w-full px-4 flex justify-center items-center py-10">
+        <span className="text-red-600">{response.message}</span>
       </div>
+    );
+  }
+  
+  const chartData = mockSalesData.monthlyData.map(item => ({
+    name: item.month,
+    ventas: item.sales
+  }));
+
+  return (
+    <div className="w-full max-w-6xl mx-auto px-4 flex flex-col gap-y-6">
+      <h1 className="text-3xl font-bold mb-6">Panel de Administración</h1>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* Card de Productos Totales */}
+        <MetricCard
+          title="Productos Totales"
+          value={response.productsCount.toString()}
+          icon={<Package size={25} />}
+          trend={{
+            value: 12,
+            isPositive: true,
+          }}
+        />
+
+        {/* Card de Productos con Bajo Stock */}
+        <MetricCard
+          title="Productos con Bajo Stock"
+          value={response.lowStockCount.toString()}
+          icon={<AlertTriangle size={25} />}
+          trend={{
+            value: 5,
+            isPositive: false,
+          }}
+          className="border-red-600"
+        />
+
+        {/* Card de Ventas Totales */}
+        <MetricCard
+          title="Ventas Totales"
+          value={`$${mockSalesData.totalRevenue.toLocaleString("es-ES", {
+            minimumFractionDigits: 2,
+          })}`}
+          icon={<DollarSign size={25} />}
+          trend={{
+            value: mockSalesData.monthlyGrowth,
+            isPositive: true,
+          }}
+          className="md:col-span-2 lg:col-span-1"
+        />
+      </div>
+      <Card>
+         <CardHeader>
+           <CardTitle className="text-xl mb-4">Ventas mensuales</CardTitle>
+            <SalesChart data={chartData} />
+         </CardHeader>
+      </Card>
     </div>
   );
-} 
+}

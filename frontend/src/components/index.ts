@@ -1,2 +1,10 @@
 export { RegisterForm } from './auth/RegisterForm';
 export { LoginForm } from './auth/LoginForm';
+export { Header } from './Header';
+export { LogoutButton } from './LogoutButton';
+export { DataTable } from './products/DataTable';
+export { Columns } from './products/Columns';
+export { FormProduct } from './products/FormProduct';
+export { ButtonDeleteProduct } from './products/ButtonDeleteProduct';
+export { MetricCard } from './admin/MetricCard'
+export { SalesChart } from './admin/SalesChart';
