@@ -270,7 +270,6 @@ Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
 ### 📊 Dashboard de Administrador
 ![Admin Dashboard](./images/admin-dashboard.png)
 *Panel de administración con métricas y gráficos de ventas*
-
 ---
 **Desarrollado por:** Gonzalo Haag  
 **Fecha:** 2025  

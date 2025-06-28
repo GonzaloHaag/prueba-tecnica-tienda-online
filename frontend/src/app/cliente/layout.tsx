@@ -8,7 +8,6 @@ export default async function ClienteLayout({
 }>) {
   // Verificar que sea cliente - si no lo es, redirect automático
   await requireCliente();
-  
   return (
     <>
       <Header />

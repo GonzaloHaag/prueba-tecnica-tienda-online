@@ -5,8 +5,6 @@ const adminRouter = express.Router();
 adminRouter.get("/count-products", async (req, res) => {
     try {
       const count = await Product.countDocuments({});
-      
-      // Convertir stock a número para comparación correcta
       const lowStockProducts = await Product.find({}).then(products => 
         products.filter(product => {
           const stockNumber = parseInt(product.stock) || 0;

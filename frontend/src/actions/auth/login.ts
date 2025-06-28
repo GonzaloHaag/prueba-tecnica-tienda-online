@@ -37,8 +37,6 @@ export const userLoginAction = async (email: string, password: string) => {
         
         /** Guardar toda la información del usuario en las cookies */
         const cookieStore = await cookies();
-        
-        // Token de autenticación
         cookieStore.set('token', data.token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',

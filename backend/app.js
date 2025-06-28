@@ -10,8 +10,6 @@ const app = express();
 
 mongoose.set('strictQuery',false);
 connectDb();
-
-// Configuración de CORS más específica
 const corsOptions = {
   origin: [
     'http://localhost:3000', // Desarrollo local
