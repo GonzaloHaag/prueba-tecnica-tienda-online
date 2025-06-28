@@ -23,7 +23,11 @@ export const RegisterForm = () => {
         setError(response.message);
         return;
       }
-      e.currentTarget.reset();
+      // Limpiar el formulario de forma segura
+      const form = e.currentTarget;
+      if (form) {
+        form.reset();
+      }
       router.push('/login');
     })
   }
