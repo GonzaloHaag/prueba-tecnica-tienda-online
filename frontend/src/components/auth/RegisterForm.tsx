@@ -18,12 +18,12 @@ export const RegisterForm = () => {
     const password = formData.get('password') as string;
     
     startTranstion(async() => {
+      setError(null);
       const response = await userRegisterAction(email, password);
       if(!response.success) {
         setError(response.message);
         return;
       }
-      // Limpiar el formulario de forma segura
       const form = e.currentTarget;
       if (form) {
         form.reset();
