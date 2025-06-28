@@ -7,9 +7,11 @@ import { redirect } from "next/navigation";
 
 export default async function AdminPage() {
   const response = await getCountProductsAdminAction();
-  if (response.redirectToLogin) {
+
+  if (!response.success && response.redirectToLogin) {
     redirect("/login");
   }
+  
   if (!response.success) {
     return (
       <div className="w-full px-4 flex justify-center items-center py-10">
