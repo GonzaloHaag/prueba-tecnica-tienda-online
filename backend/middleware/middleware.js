@@ -47,7 +47,7 @@ const userExtractor = async (req, res, next) => {
     }
     
     if (error.name === 'JsonWebTokenError') {
-      return res.status(401).json({ error: "Token inválido" });
+      return res.status(401).json({ error: "Token inválido - Verifica que el JWT_SECRET sea correcto" });
     }
     
     return res.status(500).json({ error: "Error interno del servidor" });
