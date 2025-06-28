@@ -57,7 +57,7 @@ authRouter.post('/login',async (req,res) => {
         role: findUser.role
       };
       
-      /** Devolvemos el token y los datos del usuario */
+      /** Devuelvo el token y los datos del usuario */
       res.status(200).send({ 
         token, 
         user,

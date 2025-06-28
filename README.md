@@ -103,6 +103,7 @@ prueba-tecnica-tienda-online/
 │   │   │   ├── products/  # CRUD productos
 │   │   │   └── ui/        # Componentes base
 │   │   ├── lib/           # Utilidades y tipos
+│   │   └── store.ts       # Estado global (Zustand)
 │   └── public/            # Assets estáticos
 └── README.md
 ```
@@ -229,7 +230,7 @@ Puedes registrar cualquier usuario cliente con:
 - **bcrypt**: Hash seguro de contraseñas
 - **Validaciones**: Frontend y backend
 - **Autorización**: Middleware por roles
-- **CORS**: Configurado para desarrollo
+- **CORS**: Configurado para desarrollo y produccion
 - **Sanitización**: Validación de datos de entrada
 
 

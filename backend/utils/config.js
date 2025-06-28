@@ -4,7 +4,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'default-secret-key-change-in-produ
 const CLOUDINARY_SECRET = process.env.CLOUDINARY_SECRET;
 
 if (!MONGODB_URI) {
-  console.error('❌ MONGODB_URI no está configurado');
+  console.error('MONGODB_URI no está configurado');
   process.exit(1);
 }
 
