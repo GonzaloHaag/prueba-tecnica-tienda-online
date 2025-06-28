@@ -6,9 +6,7 @@ export default async function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Verificar que sea admin - si no lo es, redirect automático
   await requireAdmin();
-  
   return (
     <>
       <Header />

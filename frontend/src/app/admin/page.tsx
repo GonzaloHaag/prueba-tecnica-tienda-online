@@ -17,7 +17,7 @@ export default async function AdminPage() {
       </div>
     );
   }
-  // Datos para el gráfico
+  
   const chartData = mockSalesData.monthlyData.map(item => ({
     name: item.month,
     ventas: item.sales

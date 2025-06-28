@@ -23,7 +23,7 @@ import { Input } from "../ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import Link from "next/link";
 import { PlusCircleIcon } from "lucide-react";
-import { useFilterStore } from "@/lib/store";
+import { useFilterStore } from "@/store";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
