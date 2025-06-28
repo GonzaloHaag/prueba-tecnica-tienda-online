@@ -106,7 +106,6 @@ prueba-tecnica/
 │   │   │   ├── products/  # CRUD productos
 │   │   │   └── ui/        # Componentes base
 │   │   ├── lib/           # Utilidades y tipos
-│   │   └── hooks/         # Custom hooks
 │   └── public/            # Assets estáticos
 └── README.md
 ```
@@ -252,22 +251,20 @@ Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
 ## 📸 Capturas de Pantalla
 
 ### 🔐 Autenticación
-![Login Page](/images/login-page.png)
+![Login Page](./images/login-page.png)
 *Pantalla de login con validaciones y feedback visual*
 
-![Register Page](/images/register-page.png)
+![Register Page](./images/register-page.png)
 *Formulario de registro con validaciones*
 
-
 ### 📦 Gestión de Productos
-![Products List](/images/clientes-productos-page.png)
+![Products List](./images/clientes-productos-page.png)
 *Lista de productos con filtros, búsqueda y paginación*
 
-![Product Form](/images/clientes-productos-nuevo.png)
+![Product Form](./images/clientes-productos-nuevo.png)
 *Formulario de creación de productos con subida de imágenes*
 
-
-![Product Form](/images/clientes-productos-editar.png)
+![Product Edit](./images/clientes-productos-editar.png)
 *Formulario de edición de productos*
 
 ### 📊 Dashboard de Administrador
