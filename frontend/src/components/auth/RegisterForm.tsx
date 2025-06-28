@@ -13,15 +13,17 @@ export const RegisterForm = () => {
   const router = useRouter();
   const handleSubmit = async(e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const { email, password } = form;
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    
     startTranstion(async() => {
-      const response = await userRegisterAction(email.value,password.value);
+      const response = await userRegisterAction(email, password);
       if(!response.success) {
         setError(response.message);
         return;
       }
-      form.reset();
+      e.currentTarget.reset();
       router.push('/login');
     })
   }

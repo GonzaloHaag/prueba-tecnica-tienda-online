@@ -13,11 +13,12 @@ export const LoginForm = () => {
   const router = useRouter();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const { email, password } = form;
-
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    
     startTransition(async () => {
-      const response = await userLoginAction(email.value, password.value);
+      const response = await userLoginAction(email, password);
       if (!response.success) {
         setError(response.message);
         return;
@@ -31,11 +32,11 @@ export const LoginForm = () => {
       <div className="flex flex-col gap-6">
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input id="email" name="email" type="email" placeholder="m@example.com" required />
         </div>
         <div className="grid gap-3">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" required />
+          <Input id="password" name="password" type="password" required />
         </div>
         <Button
           type="submit"
