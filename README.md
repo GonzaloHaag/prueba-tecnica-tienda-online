@@ -120,7 +120,7 @@ prueba-tecnica/
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/GonzaloHaag/prueba-tecnica-tienda-online.git
-cd prueba-tecnica
+cd prueba-tecnica-tienda-online
 ```
 
 ### 2. Configurar Backend
@@ -269,7 +269,6 @@ Backend (Render): https://prueba-tecnica-tienda-online.onrender.com/
 
 ### 📊 Dashboard de Administrador
 ![Admin Dashboard](./images/admin-dashboard.png)
-*Panel de administración con métricas y gráficos de ventas*
 ---
 **Desarrollado por:** Gonzalo Haag  
 **Fecha:** 2025  
